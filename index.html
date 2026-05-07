@@ -2,1195 +2,792 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SN Consultancy | Asset Reliability Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>SN Consultancy | Complete Platform | Digital Tools | About | Contact</title>
+    <!-- Google Fonts: Inter for clean modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tangerine', serif;
+            font-size: 15px;
+            text-shadow: 4px 4px 4px #aaa;
+            line-height: 1.4;
+        }
+
+        /* Color palette: light brown, warm gray, taupe */
         :root {
-            --navy: #0f172a;
-            --navy-light: #1e293b;
-            --blue: #3b82f6;
-            --blue-dark: #2563eb;
-            --green: #22c55e;
-            --green-dark: #16a34a;
-            --amber: #f59e0b;
-            --red: #ef4444;
-            --gray-50: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-400: #94a3b8;
-            --gray-500: #64748b;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1e293b;
-            --gray-900: #0f172a;
-            --sidebar-w: 260px;
-            --radius: 12px;
-            --radius-sm: 8px;
-            --radius-lg: 16px;
-            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
-            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-            --transition: 0.2s ease;
+            --light-brown-bg: #EAE2D8;
+            --warm-gray: #DCD2C6;
+            --taupe-accent: #C4B5A2;
+            --deep-umber: #5D5346;
+            --soft-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            --border-neutral: 1px solid #E2D6CC;
         }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--gray-100); color: var(--gray-900); height: 100vh; overflow: hidden; -webkit-font-smoothing: antialiased; }
 
-        /* ========== LOGIN ========== */
-        .login-screen {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, var(--navy) 0%, #1a2744 50%, var(--navy) 100%);
-            padding: 20px; position: relative; overflow: hidden;
+        /* ========== HEADER ========== */
+        .site-header {
+            background-color: rgba(234, 226, 216, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: var(--border-neutral);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
         }
-        .login-screen::before {
-            content: ''; position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
-            top: -200px; right: -200px; border-radius: 50%;
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 32px;
         }
-        .login-screen::after {
-            content: ''; position: absolute; width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%);
-            bottom: -100px; left: -100px; border-radius: 50%;
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 20px 0;
+            gap: 24px;
         }
-        .login-card {
-            background: rgba(255,255,255,0.97); border-radius: var(--radius-lg);
-            padding: 44px 40px; max-width: 420px; width: 100%;
-            box-shadow: var(--shadow-xl); position: relative;
-            animation: fadeUp 0.5s ease;
+
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #4B4138, #7C6B58);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .login-brand { text-align: center; margin-bottom: 32px; }
-        .login-brand .logo-icon {
-            width: 52px; height: 52px; background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-            border-radius: 14px; display: inline-flex; align-items: center; justify-content: center;
-            margin-bottom: 16px; box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+
+        .logo h1 img {
+            vertical-align: middle;
+            object-fit: contain;
+            max-height: 65px;
+            width: auto;
         }
-        .login-brand h1 { font-size: 1.5rem; font-weight: 700; color: var(--gray-900); letter-spacing: -0.5px; }
-        .login-brand p { font-size: 0.875rem; color: var(--gray-500); margin-top: 4px; }
-        .login-error {
-            background: #fef2f2; color: var(--red); border: 1px solid #fecaca;
-            border-radius: var(--radius-sm); padding: 10px 14px; font-size: 0.85rem;
-            margin-bottom: 20px; display: none; align-items: center; gap: 8px;
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
         }
-        .login-error.show { display: flex; }
-        .form-group { margin-bottom: 18px; }
-        .form-group label {
-            display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500; color: var(--gray-700);
+
+        .nav-links li a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #3F3A35;
+            transition: all 0.2s ease;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
         }
-        .form-group .input-wrap {
-            position: relative; display: flex; align-items: center;
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #9B846B;
+            border-bottom-color: #CBB295;
         }
-        .form-group .input-wrap svg {
-            position: absolute; left: 14px; color: var(--gray-400); pointer-events: none;
+
+        /* Prototype Button in Nav */
+        .prototype-nav-btn {
+            background: #7C6B58;
+            color: white !important;
+            padding: 8px 18px !important;
+            border-radius: 40px !important;
+            border-bottom: none !important;
         }
-        .form-group input {
-            width: 100%; padding: 11px 14px 11px 42px;
-            border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm);
-            font-family: inherit; font-size: 0.9rem; color: var(--gray-900);
-            background: var(--gray-50); transition: var(--transition);
-            outline: none;
+        .prototype-nav-btn:hover {
+            background: #5D5346;
+            transform: translateY(-2px);
         }
-        .form-group input:focus {
-            border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+
+        /* ========== PAGE TRANSITION ========== */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== HOME HERO SECTION ========== */
+        .hero-full { width: 100%; position: relative; }
+        .hero-image-full {
+            background-image: url(https://rentechboilers.com/wp-content/uploads/2023/02/Fired-Water-Tube-Boiler-2-768x512.jpg);
+            background-size: cover;
+            background-position: center 35%;
+            background-repeat: no-repeat;
+            width: 100%;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-image-full::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(105deg, rgba(220,204,186,0.55) 0%, rgba(166,146,122,0.4) 100%);
+            z-index: 1;
+        }
+        .hero-content-wrapper {
+            position: relative;
+            z-index: 2;
+            max-width: 940px;
+            margin-left: 8%;
+            padding: 2rem 1rem;
+        }
+        .hero-main-text {
+            font-size: 2.2rem;
+            text-align: center;
+            font-weight: 400;
+            line-height: 1.2;
+            color: #221F1C;
+            text-shadow: 4px 4px 4px rgba(170,170,170,0.5);
+            padding: 0.6rem 1rem 0.6rem 0rem;
+            display: inline-block;
+        }
+        .image-context-badge {
+            position: absolute;
+            bottom: 28px;
+            right: 28px;
+            background: rgba(30,28,26,0.75);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            color: #F2EBE2;
+            z-index: 3;
+            font-family: monospace;
+            pointer-events: none;
+            max-width: 80%;
+            text-align: right;
+            line-height: 1.3;
+        }
+        .scrolling-middle {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        .marquee-track-middle {
+            display: flex;
+            width: max-content;
+            animation: scrollTextMiddle 22s linear infinite;
+        }
+        .marquee-track-middle .moving-text-middle {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+            white-space: nowrap;
+            padding-right: 70px;
+        }
+        .marquee-track-middle .moving-text-middle:before { content: ""; font-weight: 700; color: #FFE6C7; }
+        @keyframes scrollTextMiddle { 0% { transform: translateX(0); } 100% { transform: translateX(-48%); } }
+        .scroll-wrapper-middle { width: 100%; overflow-x: hidden; }
+
+        /* ========== SERVICES PAGE ========== */
+        .services-page, .blueprint-page, .digital-page, .about-page, .contact-page {
+            background: #F9F5EF;
+            padding: 4rem 0 5rem 0;
+        }
+        .page-title { text-align: center; font-size: 3rem; font-weight: 700; color: #4A3F36; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .page-subtitle { text-align: center; font-size: 1.2rem; color: #6F6254; max-width: 800px; margin: 0 auto 3rem auto; line-height: 1.5; }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .tier-card {
+            background: #FFFFFF;
+            border-radius: 28px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #EADFCB;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .tier-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); border-color: #CDBCA5; }
+        .tier-badge { position: absolute; top: -12px; left: 24px; background: #7C6B58; color: white; padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.75rem; font-weight: 600; }
+        .tier-icon { font-size: 2.8rem; margin: 1rem 0 0.8rem 0; }
+        .tier-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #3F362E; }
+        .tier-price { font-size: 1rem; color: #9B846B; font-weight: 500; margin-bottom: 1.2rem; border-bottom: 1px dashed #E2D5C5; padding-bottom: 0.6rem; }
+        .tier-description { color: #5E5548; line-height: 1.5; margin-bottom: 1.2rem; font-weight: 500; }
+        .feature-list { list-style: none; margin: 1rem 0 1.5rem 0; flex-grow: 1; }
+        .feature-list li { padding: 0.5rem 0; font-size: 0.9rem; display: flex; align-items: center; gap: 10px; color: #4F4439; border-bottom: 1px solid #F1E9DF; }
+        .feature-list li::before { content: "✓"; color: #9B846B; font-weight: bold; }
+        .tier-cta { background: transparent; border: 1.5px solid #CBB295; padding: 0.7rem 1.5rem; border-radius: 40px; font-weight: 600; color: #5C4A36; cursor: pointer; text-align: center; margin-top: 1rem; width: 100%; font-family: inherit; }
+        .tier-cta:hover { background: #CBB295; color: #2F2A24; }
+
+        .section-img {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .section-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: var(--soft-shadow);
+        }
+        .img-grid {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        .img-grid img {
+            max-width: 240px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: var(--soft-shadow);
+        }
+
+        .app-showcase { background: linear-gradient(135deg, #E8DFD3 0%, #DDD0C0 100%); border-radius: 32px; padding: 2.5rem; margin: 2rem 0; text-align: center; }
+        .app-showcase h3 { font-size: 1.8rem; color: #2B2620; margin-bottom: 0.5rem; }
+        .app-features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .app-feature { background: rgba(255,255,245,0.7); backdrop-filter: blur(4px); border-radius: 20px; padding: 1rem; }
+        .app-feature span { font-size: 2rem; display: block; }
+
+        .engineering-section { background: #F1EAE0; border-radius: 32px; padding: 2.5rem; margin: 3rem 0 2rem; }
+        .engineering-section h3 { font-size: 1.8rem; color: #3F362E; margin-bottom: 1rem; display: flex; align-items: center; gap: 12px; }
+        .engineering-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .eng-item { background: white; border-radius: 20px; padding: 1.2rem; text-align: center; border: 1px solid #DDD0C0; }
+        .cta-section { background: #E8DFD3; border-radius: 32px; padding: 3rem 2rem; text-align: center; margin-top: 3rem; }
+        .cta-btn { background: #7C6B58; color: white; border: none; padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; margin-top: 1.2rem; cursor: pointer; }
+
+         /* PROTOTYPE LAUNCH SECTION */
+        .prototype-launch-section {
+            background: linear-gradient(135deg, #2C3E33 0%, #1A2A1F 100%);
+            border-radius: 28px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            color: white;
+        }
+        .prototype-launch-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .prototype-launch-section p {
+            margin-bottom: 1.2rem;
+            opacity: 0.9;
+        }
+        .launch-prototype-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #CBB295;
+            color: #2C3E33;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+        .launch-prototype-btn:hover {
+            background: #E8DFD3;
+            transform: translateY(-2px);
+        }
+        .prototype-credential {
+            background: rgba(255,255,255,0.15);
+            border-radius: 14px;
+            padding: 10px 18px;
+            display: inline-block;
+            margin-top: 18px;
+            font-size: 0.75rem;
+            font-family: monospace;
+        }
+
+        /* Blueprint Page Styles */
+        .architecture-overview { background: #FFFFFF; border-radius: 32px; padding: 2rem; margin-bottom: 2rem; box-shadow: var(--soft-shadow); }
+        .layer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .layer-card { background: #F1EAE0; border-radius: 24px; padding: 1.5rem; text-align: left; }
+        .layer-card strong { display: block; font-size: 1.2rem; margin-bottom: 0.8rem; color: #4A3F36; }
+        .data-bank-list { margin-top: 1rem; padding-left: 1.2rem; }
+        .data-bank-list li { margin: 0.5rem 0; font-size: 0.85rem; color: #5E5548; }
+        .role-table { overflow-x: auto; margin: 2rem 0; }
+        .role-table table { width: 100%; border-collapse: collapse; background: white; border-radius: 20px; overflow: hidden; }
+        .role-table th, .role-table td { padding: 1rem; text-align: left; border-bottom: 1px solid #E2D5C5; }
+        .role-table th { background: #DCCFC4; color: #2B2620; }
+        .workflow-step { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; padding: 1rem; background: #F9F5EF; border-radius: 16px; flex-wrap: wrap; }
+        .security-badge { display: inline-block; background: #EAE2D8; padding: 0.3rem 0.8rem; border-radius: 30px; font-size: 0.8rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+        .blueprint-cta { background: #E8DFD3; border-radius: 32px; padding: 2.5rem; text-align: center; margin-top: 2rem; }
+        .btn-primary { background: #7C6B58; color: white; border: none; padding: 0.9rem 2rem; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 1rem; }
+
+        /* Digital Products Grid */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .product-card { background: white; border-radius: 28px; padding: 2rem; text-align: center; transition: all 0.3s ease; border: 1px solid #EADFCB; }
+        .product-card:hover { transform: translateY(-6px); box-shadow: var(--soft-shadow); }
+        .product-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .product-card h3 { font-size: 1.5rem; margin-bottom: 0.8rem; color: #3F362E; }
+        .product-tag { display: inline-block; background: #EAE2D8; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.75rem; margin-bottom: 1rem; }
+
+        /* About Section */
+        .about-content { background: white; border-radius: 32px; padding: 2.5rem; margin-bottom: 2rem; }
+        .mission-vision { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .mv-card { background: #F1EAE0; border-radius: 24px; padding: 1.8rem; text-align: center; }
+
+        /* Contact Form */
+        .contact-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; background: white; border-radius: 32px; padding: 2rem; }
+        .contact-form input, .contact-form textarea, .contact-form select { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #E2D5C5; border-radius: 16px; font-family: inherit; background: #FEFCF8; }
+        .submit-btn { background: #7C6B58; color: white; border: none; padding: 1rem; border-radius: 50px; font-weight: 600; cursor: pointer; width: 100%; }
+        .contact-info { padding: 1rem; }
+        .contact-info p { margin: 1rem 0; display: flex; align-items: center; gap: 12px; }
+
+        footer { background: #ECE3DB; padding: 1.2rem 0; border-top: 1px solid #DCCFC4; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+
+        /* Modal for Demo Notification */
+        .demo-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .demo-modal-content {
             background: white;
+            border-radius: 28px;
+            padding: 32px;
+            max-width: 420px;
+            text-align: center;
+            animation: modalFadeIn 0.3s ease;
         }
-        .form-group input::placeholder { color: var(--gray-400); }
-        .login-btn {
-            width: 100%; padding: 12px; border: none; border-radius: var(--radius-sm);
-            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-            color: white; font-weight: 600; font-size: 0.95rem; cursor: pointer;
-            transition: var(--transition); position: relative;
-            box-shadow: 0 4px 14px rgba(59,130,246,0.3);
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
-        .login-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,130,246,0.35); }
-        .login-btn:active { transform: translateY(0); }
-        .login-btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
-        .login-btn .spinner {
-            display: none; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3);
-            border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite;
-            position: absolute; left: 50%; margin-left: -9px; top: 50%; margin-top: -9px;
+        .demo-modal-content h3 {
+            font-size: 1.5rem;
+            color: #2C3E33;
+            margin-bottom: 12px;
         }
-        .login-btn.loading .spinner { display: block; }
-        .login-btn.loading span { visibility: hidden; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .login-footer { margin-top: 20px; text-align: center; }
-        .login-footer p { font-size: 0.75rem; color: var(--gray-400); }
-        .demo-creds {
-            margin-top: 20px; padding: 14px; background: var(--gray-50);
-            border-radius: var(--radius-sm); border: 1px dashed var(--gray-200);
+        .demo-modal-content p {
+            color: #6B6B6B;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
-        .demo-creds summary { font-size: 0.8rem; color: var(--gray-500); cursor: pointer; font-weight: 500; }
-        .demo-creds table { width: 100%; margin-top: 10px; border-collapse: collapse; font-size: 0.78rem; }
-        .demo-creds td { padding: 4px 6px; color: var(--gray-600); }
-        .demo-creds td:first-child { font-weight: 600; color: var(--gray-700); }
-
-        /* ========== APP LAYOUT ========== */
-        .app-container { display: none; height: 100vh; width: 100%; }
-        .app-container.active { display: flex; }
-
-        /* ========== SIDEBAR ========== */
-        .sidebar {
-            width: var(--sidebar-w); background: var(--navy);
-            display: flex; flex-direction: column; flex-shrink: 0;
-            box-shadow: 2px 0 20px rgba(0,0,0,0.1); z-index: 20;
-        }
-        .sidebar-header {
-            padding: 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.06);
-            display: flex; align-items: center; gap: 12px;
-        }
-        .sidebar-header .brand-icon {
-            width: 36px; height: 36px; background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-            border-radius: 10px; display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; font-weight: 700; font-size: 0.85rem; color: white;
-        }
-        .sidebar-header .brand-text h1 { font-size: 1.1rem; font-weight: 700; color: white; letter-spacing: -0.3px; }
-        .sidebar-header .brand-text p { font-size: 0.65rem; color: var(--gray-400); margin-top: 1px; }
-        .nav-menu { flex: 1; padding: 16px 12px; display: flex; flex-direction: column; gap: 2px; overflow-y: auto; }
-        .nav-item {
-            display: flex; align-items: center; gap: 12px; padding: 10px 14px;
-            border-radius: var(--radius-sm); cursor: pointer; transition: all var(--transition);
-            color: var(--gray-400); font-size: 0.875rem; font-weight: 500; text-decoration: none;
-        }
-        .nav-item:hover { background: rgba(255,255,255,0.06); color: var(--gray-200); }
-        .nav-item.active { background: rgba(59,130,246,0.15); color: var(--blue); }
-        .nav-item .nav-icon { width: 20px; height: 20px; flex-shrink: 0; }
-        .nav-item .nav-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .nav-label { flex: 1; }
-        .user-info-sidebar {
-            padding: 16px 14px; border-top: 1px solid rgba(255,255,255,0.06);
-            display: flex; align-items: center; gap: 10px;
-        }
-        .user-avatar {
-            width: 36px; height: 36px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--blue), #6366f1);
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 0.8rem; color: white; flex-shrink: 0;
-        }
-        .user-details { flex: 1; min-width: 0; }
-        .user-name { font-size: 0.85rem; font-weight: 600; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .user-role { font-size: 0.7rem; color: var(--gray-400); }
-        .logout-btn {
-            background: none; border: none; color: var(--gray-500); cursor: pointer;
-            padding: 6px; border-radius: 6px; transition: var(--transition);
-            display: flex; align-items: center; justify-content: center;
-        }
-        .logout-btn:hover { background: rgba(255,255,255,0.08); color: var(--red); }
-        .logout-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-        /* ========== MAIN CONTENT ========== */
-        .main-content {
-            flex: 1; display: flex; flex-direction: column; overflow: hidden;
-            background: var(--gray-100);
-        }
-        .top-bar {
-            padding: 20px 32px; background: white; border-bottom: 1px solid var(--gray-200);
-            display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;
-        }
-        .page-title { font-size: 1.35rem; font-weight: 700; color: var(--gray-900); letter-spacing: -0.3px; }
-        .content-area {
-            flex: 1; overflow-y: auto; padding: 28px 32px;
+        .demo-modal-close {
+            background: #5A7B6E;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 12px;
         }
 
-        /* ========== KPI CARDS ========== */
-        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-bottom: 28px; }
-        .kpi-card {
-            background: white; border-radius: var(--radius); padding: 20px;
-            box-shadow: var(--shadow); border: 1px solid var(--gray-200);
-            transition: all var(--transition);
+        @media (max-width: 850px) {
+            .hero-main-text { font-size: 1.8rem; }
+            .page-title { font-size: 2rem; }
+            .nav-links { gap: 1rem; }
+            .image-context-badge { font-size: 0.65rem; right: 16px; bottom: 16px; padding: 6px 12px; max-width: 90%; }
         }
-        .kpi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
-        .kpi-card .kpi-icon {
-            width: 36px; height: 36px; border-radius: 10px; display: flex;
-            align-items: center; justify-content: center; margin-bottom: 14px;
-        }
-        .kpi-card .kpi-icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .kpi-value { font-size: 1.75rem; font-weight: 800; color: var(--gray-900); letter-spacing: -0.5px; line-height: 1.2; }
-        .kpi-label { font-size: 0.8rem; color: var(--gray-500); margin-top: 4px; font-weight: 500; }
-
-        /* ========== CHARTS ========== */
-        .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
-        .chart-card {
-            background: white; border-radius: var(--radius); padding: 22px;
-            box-shadow: var(--shadow); border: 1px solid var(--gray-200);
-        }
-        .chart-card h3 { font-size: 0.9rem; font-weight: 600; color: var(--gray-700); margin-bottom: 16px; }
-        .chart-card canvas { max-height: 220px; max-width: 100%; }
-
-        /* ========== SECTION HEADER ========== */
-        .section-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 16px; margin-top: 8px;
-        }
-        .section-header h3 { font-size: 1rem; font-weight: 600; color: var(--gray-700); }
-
-        /* ========== ASSET CARDS ========== */
-        .asset-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-        .asset-card {
-            background: white; border-radius: var(--radius); padding: 18px;
-            cursor: pointer; transition: all var(--transition);
-            box-shadow: var(--shadow); border: 1px solid var(--gray-200);
-            border-left: 4px solid var(--gray-300);
-        }
-        .asset-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-color: var(--gray-300); }
-        .asset-card.border-operational { border-left-color: var(--green); }
-        .asset-card.border-caution { border-left-color: var(--amber); }
-        .asset-card.border-critical { border-left-color: var(--red); }
-        .asset-card .asset-name { font-weight: 600; font-size: 0.95rem; color: var(--gray-900); }
-        .asset-card .asset-meta { font-size: 0.8rem; color: var(--gray-500); margin-top: 4px; }
-        .asset-card .health-row { margin-top: 14px; }
-        .asset-card .health-row .health-header { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--gray-600); margin-bottom: 5px; }
-        .health-bar { background: var(--gray-200); border-radius: 20px; height: 6px; overflow: hidden; }
-        .health-bar-fill { height: 6px; border-radius: 20px; transition: width 0.6s ease; }
-
-        /* ========== TABLES ========== */
-        .table-wrap {
-            background: white; border-radius: var(--radius); overflow: hidden;
-            box-shadow: var(--shadow); border: 1px solid var(--gray-200);
-        }
-        .data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-        .data-table th {
-            text-align: left; padding: 12px 18px; font-weight: 600; font-size: 0.78rem;
-            color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.04em;
-            background: var(--gray-50); border-bottom: 1px solid var(--gray-200);
-        }
-        .data-table td { padding: 12px 18px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); }
-        .data-table tbody tr { transition: var(--transition); }
-        .data-table tbody tr:hover { background: var(--gray-50); }
-        .data-table tbody tr:last-child td { border-bottom: none; }
-        .data-table .empty { text-align: center; padding: 40px 18px; color: var(--gray-400); }
-
-        /* ========== BUTTONS ========== */
-        .btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 9px 18px; border-radius: var(--radius-sm); border: none;
-            font-family: inherit; font-size: 0.85rem; font-weight: 500;
-            cursor: pointer; transition: all var(--transition);
-        }
-        .btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .btn-primary { background: var(--blue); color: white; }
-        .btn-primary:hover { background: var(--blue-dark); box-shadow: 0 4px 12px rgba(59,130,246,0.3); transform: translateY(-1px); }
-        .btn-secondary { background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
-        .btn-secondary:hover { background: var(--gray-200); }
-        .btn-sm { padding: 6px 12px; font-size: 0.8rem; }
-        .btn-xs { padding: 4px 10px; font-size: 0.75rem; border-radius: 6px; }
-        .actions { display: flex; gap: 8px; }
-
-        /* ========== STATUS BADGES ========== */
-        .badge {
-            display: inline-flex; align-items: center; gap: 5px;
-            padding: 3px 10px; border-radius: 20px; font-size: 0.72rem;
-            font-weight: 600; letter-spacing: 0.01em;
-        }
-        .badge .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
-        .badge-operational { background: #f0fdf4; color: #15803d; }
-        .badge-operational .dot { background: var(--green); }
-        .badge-caution { background: #fffbeb; color: #b45309; }
-        .badge-caution .dot { background: var(--amber); }
-        .badge-critical { background: #fef2f2; color: #b91c1c; }
-        .badge-critical .dot { background: var(--red); }
-        .badge-risk-low { background: #f0fdf4; color: #15803d; }
-        .badge-risk-medium { background: #fffbeb; color: #b45309; }
-        .badge-risk-high { background: #fef2f2; color: #b91c1c; }
-
-        /* ========== MODAL ========== */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15,23,42,0.5); backdrop-filter: blur(4px);
-            display: flex; align-items: center; justify-content: center;
-            z-index: 1000; animation: fadeIn 0.15s ease;
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .modal {
-            background: white; border-radius: var(--radius-lg);
-            padding: 28px; max-width: 520px; width: 90%; max-height: 85vh;
-            overflow-y: auto; box-shadow: var(--shadow-xl);
-            animation: scaleIn 0.2s ease;
-        }
-        @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .modal h3 { font-size: 1.1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 22px; display: flex; align-items: center; gap: 8px; }
-        .modal .form-group { margin-bottom: 16px; }
-        .modal .form-group label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--gray-700); margin-bottom: 5px; }
-        .modal .form-group input,
-        .modal .form-group select,
-        .modal .form-group textarea {
-            width: 100%; padding: 10px 12px; border: 1.5px solid var(--gray-200);
-            border-radius: var(--radius-sm); font-family: inherit; font-size: 0.88rem;
-            background: var(--gray-50); transition: var(--transition); outline: none;
-        }
-        .modal .form-group input:focus,
-        .modal .form-group select:focus,
-        .modal .form-group textarea:focus {
-            border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
-            background: white;
-        }
-        .modal .form-group textarea { resize: vertical; min-height: 70px; }
-        .modal .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
-
-        /* ========== TOAST ========== */
-        .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; gap: 8px; }
-        .toast {
-            padding: 12px 20px; border-radius: var(--radius-sm);
-            color: white; font-size: 0.88rem; font-weight: 500;
-            box-shadow: var(--shadow-lg); animation: toastIn 0.3s ease;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .toast-success { background: #166534; }
-        .toast-error { background: #991b1b; }
-        @keyframes toastIn { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
-
-        /* ========== CONNECTION STATUS ========== */
-        .conn-status {
-            position: fixed; top: 16px; right: 16px;
-            padding: 5px 12px; border-radius: 20px; font-size: 0.72rem;
-            font-weight: 500; z-index: 100; transition: var(--transition);
-            display: flex; align-items: center; gap: 6px;
-        }
-        .conn-status .conn-dot { width: 7px; height: 7px; border-radius: 50%; }
-        .conn-connected { background: #f0fdf4; color: #15803d; }
-        .conn-connected .conn-dot { background: var(--green); }
-        .conn-disconnected { background: #fef2f2; color: #b91c1c; }
-        .conn-disconnected .conn-dot { background: var(--red); }
-
-        /* ========== DETAIL PAGE ========== */
-        .detail-card { background: white; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--gray-200); }
-        .detail-header { padding: 24px 28px; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-        .detail-header h2 { font-size: 1.25rem; font-weight: 700; color: var(--gray-900); }
-        .detail-body { padding: 24px 28px; }
-        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 28px; }
-        .detail-stat { background: var(--gray-50); border-radius: var(--radius-sm); padding: 14px 16px; }
-        .detail-stat .stat-label { font-size: 0.72rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
-        .detail-stat .stat-value { font-size: 1.05rem; font-weight: 700; color: var(--gray-900); margin-top: 3px; }
-
-        /* ========== LOADING SHIMMER ========== */
-        .shimmer { background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--radius-sm); }
-        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-        .loading-screen { display: flex; align-items: center; justify-content: center; height: 50vh; flex-direction: column; gap: 16px; }
-        .spinner-lg { width: 36px; height: 36px; border: 3px solid var(--gray-200); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.7s linear infinite; }
-
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .charts-row { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            .sidebar { width: 64px; }
-            .sidebar-header { padding: 16px 14px; }
-            .sidebar-header .brand-text, .nav-label, .user-details { display: none; }
-            .nav-item { justify-content: center; padding: 10px; }
-            .user-info-sidebar { justify-content: center; padding: 12px 8px; }
-            .logout-btn { display: none; }
-            .top-bar { padding: 16px 16px; }
-            .content-area { padding: 16px; }
-            .page-title { font-size: 1.1rem; }
-            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-            .asset-grid { grid-template-columns: 1fr; }
-            .login-card { padding: 32px 24px; }
-        }
-        @media (max-width: 480px) {
-            .kpi-grid { grid-template-columns: 1fr; }
-        }
-
-        /* ========== SCROLLBAR ========== */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--gray-400); }
     </style>
 </head>
 <body>
 
-<!-- CONNECTION STATUS -->
-<div id="connStatus" class="conn-status conn-disconnected">
-    <span class="conn-dot"></span><span id="connText">Connecting...</span>
-</div>
-
-<!-- LOGIN SCREEN -->
-<div id="loginScreen" class="login-screen">
-    <div class="login-card">
-        <div class="login-brand">
-            <div class="logo-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                </svg>
-            </div>
-            <h1><img src="SN LOGO.png" width="40" height="65" style="vertical-align: baseline" alt="">Consultancy</h1>
-            <p>Asset Reliability Platform</p>
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo">
+            <h1><img src="SN LOGO2.PNG" width="50" height="65" alt="">Consultancy</h1>
         </div>
+        <ul class="nav-links">
+            <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+            <li><a href="javascript:void(0)" data-page="services" class="nav-link">Our Services</a></li>
+            <li><a href="#" data-page="blueprint" class="nav-link">App Blueprint</a></li>
+            <li><a href="#" data-page="digital" class="nav-link">Digital Tools</a></li>
+            <li><a href="#" data-page="about" class="nav-link">About</a></li>
+            <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+            <li><a href="#" onclick="showDemoModal(); return false;" class="prototype-nav-btn">🚀 Launch Demo</a></li>
+        </ul>
+    </div>
+</header>
 
-        <div class="login-error" id="loginError">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-            <span id="loginErrorText">Invalid credentials</span>
-        </div>
-
-        <div class="form-group">
-            <label for="loginEmail">Email</label>
-            <div class="input-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                <input type="email" id="loginEmail" placeholder="you@company.com" autocomplete="email" autofocus>
+<main>
+    <!-- HOME PAGE -->
+    <div id="home-page" class="page active-page">
+        <div class="hero-full">
+            <div class="hero-image-full">
+                <div class="image-context-badge">⚙️ BOILERS & PRESSURE EQUIPMENTS SERVICES, RETUBING, RESTORATING TO ORIGINAL CONDITION, ACCORDING TO ORIGINAL DESIGN CONSTRUCTION CODE</div>
+                <div class="hero-content-wrapper"><div class="hero-main-text">Evidence-based consulting solutions that enable organizations to optimize performance and sustain long-term growth</div></div>
+                <div class="scrolling-middle"><div class="scroll-wrapper-middle"><div class="marquee-track-middle"><span class="moving-text-middle">Delivered Strategic Insights</span><span class="moving-text-middle">Delivered Strategic Insights</span><span class="moving-text-middle">Delivered Strategic Insights</span><span class="moving-text-middle">Delivered Strategic Insights</span></div></div></div>
+                <div style="height: 2rem;"></div>
             </div>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="loginPassword">Password</label>
-            <div class="input-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+    <!-- SERVICES PAGE -->
+    <div id="services-page" class="page">
+        <div class="services-page">
+            <div class="container">
+                <div class="section-img"><img src="PV2BOOK.png" width="791" height="1024" alt="Pressure Vessel Engineering Guide"></div>
+                <h2 class="page-title">Strategic Analytics & Engineering Services</h2>
+                <p class="page-subtitle">From insight reports to complete app-based monitoring — we deliver reliability for boilers, pressure vessels, and industrial assets.</p>
+
+                <div class="tiers-grid">
+                    <div class="tier-card"><div class="tier-badge">ENTRY LEVEL</div><div class="tier-icon">📊</div><h3>Insight Package</h3><div class="tier-price">Operational Foundation</div><p class="tier-description">Professional reports & compliance dashboards for top management.</p><ul class="feature-list"><li>Comprehensive Professional Report (PDF/Excel)</li><li>Root Cause Analysis (RCA) on major failures</li><li>Compliance & Audit Trail Dashboards</li><li>Material performance tracking</li><li>Digital asset register with inspection history</li><li>Static dashboards for management review</li></ul><button class="tier-cta" data-tier="Insight Package">Request Info →</button></div>
+
+                    <div class="tier-card"><div class="tier-badge">RECOMMENDED</div><div class="tier-icon">🔮</div><h3>Predictive Package</h3><div class="tier-price">Proactive Reliability</div><p class="tier-description">Web dashboard + alerts. Extend asset life 15-25%.</p><ul class="feature-list"><li>All Insight Package features</li><li><strong>Predictive Failure Modeling</strong> (RUL for tubes/vessels)</li><li>Real-time Anomaly Detection</li><li>Risk-Based Inspection (RBI) Optimization</li><li>Email/SMS alert system</li><li>Interactive web dashboard</li></ul><button class="tier-cta" data-tier="Predictive Package">Request Info →</button></div>
+
+                    <div class="tier-card"><div class="tier-badge">STRATEGIC · FULLY INTEGRATED</div><div class="tier-icon">📱</div><h3>Reliability as a Service</h3><div class="tier-price">Complete App + Role-Based Monitoring</div><p class="tier-description">Everything from Insight + Predictive, PLUS the complete digital ecosystem.</p><ul class="feature-list"><li><strong>✅ Complete Web + Mobile App</strong> (iOS/Android/Desktop)</li><li><strong>Role-Based Access:</strong> Managers / Engineers / Supervisors</li><li><strong>Real-time daily activity monitoring</strong> for all assets</li><li><strong>Comprehensive Reports for Top Management</strong> (executive summaries, risk heat maps, CapEx planning)</li><li>Full IoT sensor integration (wall thickness, vibration, creep)</li><li>Repair vs. Replace Decision Engine (Monte Carlo)</li><li>Push notifications for anomalies & upcoming inspections</li><li>Digital work order management with photo capture</li><li>SLA-backed uptime guarantees</li></ul><button class="tier-cta" data-tier="Reliability as a Service with Complete App">Contact Partnership →</button></div>
+                </div>
+
+                <div class="img-grid"><img src="PV3.jpg" width="240" height="180" alt="Pressure Vessel Detail"></div>
+
+                <div class="app-showcase"><h3>📱 Complete App — One Platform, Every Role</h3><p style="margin-top:0.5rem;">Managers see strategy. Engineers see technical data. Supervisors see daily tasks.</p><div class="app-features-grid"><div class="app-feature"><span>👔</span>Top Management<br><small>Executive dashboards, KPIs, risk heat maps, CapEx reports</small></div><div class="app-feature"><span>🔧</span>Engineers<br><small>Predictive alerts, NDE results, RCA analysis, material performance</small></div><div class="app-feature"><span>📋</span>Supervisors<br><small>Daily checklists, work orders, repair schedules, safety logs</small></div><div class="app-feature"><span>📡</span>Real-time<br><small>IoT sensor data + push notifications</small></div></div></div>
+
+                <div class="engineering-section"><h3><span>⚙️</span> Core Engineering Services — Powered by Analytics</h3><p style="margin-bottom:1rem; color:#5E5548;">Our licensed engineers pair every repair with predictive intelligence.</p><div class="engineering-grid"><div class="eng-item"><h4>🔥 Boiler Repair & Overhaul</h4><p>Tube replacement, drum repairs, burner tuning, full re-tubing with predictive wear tracking.</p></div><div class="eng-item"><h4>🏺 Pressure Vessel Integrity</h4><p>ASME certified repairs, shell and head replacements, nozzle reinforcement, NDE-backed analytics.</p></div><div class="eng-item"><h4>📡 IoT Sensor Installation</h4><p>Real-time wall thickness, corrosion, temperature monitoring for RBI optimization.</p></div><div class="eng-item"><h4>📋 Root Cause & Life Extension</h4><p>Forensic analysis + remaining life assessment for capital planning.</p></div></div></div>
+
+                <div class="cta-section"><h3>Ready to deploy the Complete App + Reliability Suite?</h3><p style="margin-top:1rem;">From professional reports to full role-based monitoring — one platform for managers, engineers, and supervisors.</p><button class="cta-btn" id="contact-now-btn">Schedule a Demo of the Complete App →</button></div>
             </div>
         </div>
+    </div>
 
-        <button class="login-btn" id="loginBtn" onclick="handleLogin()">
-            <span>Sign In</span>
-            <div class="spinner"></div>
-        </button>
+    <!-- APP BLUEPRINT PAGE -->
+    <div id="blueprint-page" class="page">
+        <div class="blueprint-page">
+            <div class="container">
+                <h2 class="page-title">📱 Complete App Architecture Blueprint</h2>
+                <p class="page-subtitle">A transparent, role-based platform that builds client confidence before we write a single line of code.</p>
 
-        <div class="login-footer">
-            <p>Backend server required on port 3001</p>
+                <div class="architecture-overview"><h3 style="color:#4A3F36; margin-bottom:1rem;">🧱 Core Structure (3-Layer Architecture)</h3><div class="layer-grid"><div class="layer-card"><strong>📡 1. Data Layer (Central Data Bank / Storage)</strong><p style="margin:0.5rem 0 0.8rem 0; font-size:0.85rem;">Complete historical & operational data repository for each pressure equipment</p><ul class="data-bank-list"><li>📁 Lost Data Recovery – Dig out all past years loss data, failure records, incident reports</li><li>📐 Original Design Drawings – As-built drawings, OEM specifications, design calculations</li><li>🛠️ Repair Drawings & History – Every repair record, alteration drawing, weld maps</li><li>🔄 Replacement Section Tracking – Component-by-component replacement log (tube sheets, nozzles, heads)</li><li>📚 Complete Document Compilation – One centralized data bank PER pressure equipment (Boiler #1, Vessel #2, etc.)</li><li>🏷️ Asset-Specific Digital Twin – All documents tagged, searchable, version controlled</li></ul></div><div class="layer-card"><strong>🧠 2. Logic Layer</strong><br>Predictive models, RBI engine, RCA algorithms, repair/replace engine, anomaly detection</div><div class="layer-card"><strong>🖥️ 3. Presentation Layer</strong><br>Web app + Mobile app (iOS/Android) with role-specific views, executive dashboards</div></div></div>
+
+                <div class="architecture-overview"><h3 style="color:#4A3F36; margin-bottom:1rem;">👥 Role-Based Access – Tailored for Every User</h3><div class="role-table"><table><thead><tr><th>User Role</th><th>Primary View</th><th>Key Features Visible</th></tr></thead><tbody><tr><td><strong>👔 Top Management</strong></td><td>Strategic Dashboard</td><td>Asset health heat map, predicted failures, maintenance spend vs budget, one-click Executive Report (PDF)</td></tr><tr><td><strong>🔧 Engineers</strong></td><td>Technical Analytics + Data Bank</td><td>Predictive failure alerts (RUL), NDE results, RCA logs, material performance, RBI optimization, FULL access to design/repair drawings</td></tr><tr><td><strong>📋 Supervisors</strong></td><td>Daily Operations + Document Access</td><td>Inspection checklists, work orders, safety logs, photo capture, shift handover notes, view replacement history</td></tr></tbody></table></div></div>
+
+                <div class="section-img"><img src="B5.jpg" width="730" height="500" alt="Boiler Blueprint Diagram"></div>
+
+                <div class="architecture-overview"><h3 style="color:#4A3F36; margin-bottom:1rem;">🔄 Key Workflows That Build Client Confidence</h3><div class="workflow-step"><strong>📂 Data Bank Population Workflow:</strong> Historical records digitized → OCR for old drawings → Tagged to specific asset → Cloud storage with version control → Accessible to authorized engineers</div><div class="workflow-step"><strong>1.</strong> Sensor detects anomaly → <strong>2.</strong> App sends push alert to Engineer + Supervisor → <strong>3.</strong> Engineer reviews severity & pulls historical repair drawings → <strong>4.</strong> Supervisor creates work order with photo → <strong>5.</strong> Management views complete trail in Executive Report</div><div class="workflow-step"><strong>📄 Executive Monthly Report (Auto-Generated)</strong><br>Input: All sensor data, repair logs, inspection results, replacement history → Output: PDF with asset health summary, risk register, maintenance cost trend, CapEx recommendation</div></div>
+
+                <div class="architecture-overview"><h3 style="color:#4A3F36; margin-bottom:1rem;">🔐 Security & Data Integrity</h3><div><span class="security-badge">Role-based access control</span><span class="security-badge">Full audit trail (who viewed/modified drawings)</span><span class="security-badge">TLS 1.3 + AES-256 encryption</span><span class="security-badge">ASME/NBBI ready exports</span><span class="security-badge">Cloud (AWS/Azure) or On-premise</span><span class="security-badge">Automated document backup & versioning</span></div></div>
+
+                <div class="img-grid"><img src="PV4.jpg" width="240" height="180" alt="Pressure Vessel 4"></div>
+
+                <div class="blueprint-cta"><h3 style="color:#3F362E;">🎯 Why This Builds Immediate Trust</h3><p style="margin:1rem 0;">"Before we write a single line of code, we give you this blueprint. You see exactly what your managers, engineers, and supervisors will see — tailored to your assets."</p><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:1rem; margin:1.5rem 0;"><div>✅ Proves usability for all levels</div><div>✅ Shows technical rigor</div><div>✅ Solves management reporting</div><div>✅ Demonstrates real-time alert value</div><div>✅ Centralizes lost historical data</div></div><button class="btn-primary" id="blueprint-demo-btn">Request Interactive Prototype →</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIGITAL PRODUCTS PAGE -->
+    <div id="digital-page" class="page">
+        <div class="digital-page">
+            <div class="container">
+                <h2 class="page-title">⚙️ Digital Products & Tools</h2>
+                <p class="page-subtitle">Purpose-built software solutions for industrial asset intelligence and reliability engineering.</p>
+                <div class="products-grid">
+                    <div class="product-card"><div class="product-icon">📊</div><div class="product-tag">Analytics Suite</div><h3>Asset Health Dashboard</h3><p>Real-time KPI visualization, risk heat maps, and predictive degradation curves for boilers and pressure vessels.</p></div>
+                    <div class="product-card"><div class="product-icon">🔍</div><div class="product-tag">RBI Engine</div><h3>Risk-Based Inspection Tool</h3><p>API 580/581 compliant algorithms to optimize inspection intervals, reduce downtime, and prioritize high-risk assets.</p></div>
+                    <div class="product-card"><div class="product-icon">📱</div><div class="product-tag">Mobile App</div><h3>Field Inspector Pro</h3><p>Offline-capable mobile app for supervisors: checklists, photo capture, work orders, QR code scanning, and shift handover reports.</p></div>
+                    <div class="product-card"><div class="product-icon">📁</div><div class="product-tag">Document Bank</div><h3>Asset Document Vault</h3><p>Centralized repository for design drawings, repair histories, material certificates, and NDE reports – organized per equipment.</p></div>
+                    <div class="product-card"><div class="product-icon">🤖</div><div class="product-tag">AI Engine</div><h3>Repair vs. Replace Advisor</h3><p>Monte Carlo simulation + life cycle cost analysis to support capital planning decisions.</p></div>
+                    <div class="product-card"><div class="product-icon">📡</div><div class="product-tag">IoT Gateway</div><h3>Sensor Integration Hub</h3><p>Plug-and-play connectivity for wall thickness, vibration, temperature, and pressure sensors.</p></div>
+                </div>
+
+               <div class="prototype-launch-section">
+                    <h2>🚀 Try the Asset Reliability Platform</h2>
+                    <p>Experience the complete app — dashboard, assets registry, inspections, and document bank.</p>
+                    <button onclick="showDemoModal()" class="launch-prototype-btn">
+                        🎯 Launch Demo Platform →
+                    </button>
+                    <div class="prototype-credential">
+                        🔐 Demo Access: admin@snconsultancy.com / Admin123!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about-page" class="page">
+        <div class="about-page">
+            <div class="container">
+                <h2 class="page-title">About <img src="SN LOGO2.PNG" width="50" height="65" alt="SN Logo 2"> Consultancy</h2>
+                <p class="page-subtitle">Evidence-based engineering consulting for mission-critical assets since 2014.</p>
+                <div class="about-content">
+                    <p style="margin-bottom: 1.5rem;"><strong>SN Consultancy</strong> bridges the gap between industrial engineering and advanced analytics. We partner with asset owners to transform reactive maintenance into predictive reliability using data, domain expertise, and purpose-built digital tools.</p>
+                    <div class="mission-vision">
+                        <div class="mv-card"><span style="font-size:2rem;">🎯</span><h3 style="margin:0.5rem 0">Mission</h3><p>To eliminate unplanned downtime for pressure equipment through transparent, evidence-based strategies.</p></div>
+                        <div class="mv-card"><span style="font-size:2rem;">👁️</span><h3 style="margin:0.5rem 0">Vision</h3><p>A world where every boiler and pressure vessel has a complete digital twin and a predictive reliability plan.</p></div>
+                        <div class="mv-card"><span style="font-size:2rem;">⚙️</span><h3 style="margin:0.5rem 0">Core Team</h3><p>Licensed mechanical engineers, data scientists, and software architects with 50+ combined years in asset integrity.</p></div>
+                    </div>
+                    <p style="margin-top:1.5rem;">📍 <strong>Based in Shah Alam, Malaysia</strong> | Serving industrial clients across Southeast Asia, the Middle East, and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <!-- COMPLETE CONTACT PAGE HTML BLOCK - REPLACE THE ENTIRE contact-page DIV WITH THIS -->
+<div id="contact-page" class="page">
+    <div class="contact-page">
+        <div class="container">
+            <h2 class="page-title">Contact Us</h2>
+            <p class="page-subtitle">Ready to discuss your asset reliability strategy or schedule a demo? Reach out to our team.</p>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 1.5rem;">📬 Get in Touch</h3>
+                    <p>📧 <strong>Email:</strong> shahrulazmisalimshah@gmail.com</p>
+                    <p>📞 <strong>Phone:</strong> +60 11-39794166</p>
+                    <p>📍 <strong>Office:</strong> Shah Alam, Malaysia</p>
+                    <p>🕒 <strong>Support hours:</strong> Monday – Saturday, 8:30 AM – 6:00 PM (MYT)</p>
+                    <hr style="margin: 1.5rem 0; border-color:#E2D5C5;">
+                    <p><strong>📱 Schedule a Demo</strong><br>See the Complete App, Data Bank, role-based dashboards, and predictive engine in a live walkthrough tailored to your assets.</p>
+                    <p><strong>🔧 Emergency Support</strong><br>For critical asset issues, our engineering hotline is available 24/7 for Reliability as a Service clients.</p>
+                </div>
+                <div>
+                    <!-- FORMSFREE INTEGRATED FORM - Basic HTML with inline feedback -->
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mrejqebd" method="POST">
+                        <!-- Hidden field for better email subject -->
+                        <input type="hidden" name="_subject" value="New inquiry from SN Consultancy Website">
+                        <!-- Optional: redirect after success (disabled, using inline feedback instead) -->
+                        <!-- <input type="hidden" name="_next" value="https://yoursite.com/thankyou.html"> -->
+
+                        <input type="text" name="name" placeholder="Full name" required>
+                        <input type="email" name="email" placeholder="Email address" required>
+                        <input type="text" name="company" placeholder="Company / Organization">
+
+                        <select name="inquiryType">
+                            <option value="">Inquiry type: Select one</option>
+                            <option>Reliability as a Service (Complete App)</option>
+                            <option>Predictive Package</option>
+                            <option>Digital Tools / IoT Sensors</option>
+                            <option>App Blueprint Consultation</option>
+                            <option>General inquiry</option>
+                        </select>
+
+                        <textarea name="message" rows="4" placeholder="Tell us about your pressure equipment, asset types, or specific reliability challenges..." required></textarea>
+
+                        <button type="submit" class="submit-btn">Send Message →</button>
+
+                        <!-- Status message container for inline feedback -->
+                        <div id="form-status" style="margin-top: 1rem; text-align: center; font-size: 0.9rem;"></div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+</main>
 
-<!-- MAIN APP -->
-<div id="mainApp" class="app-container">
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <div class="brand-text"><h1><img src="SN LOGO.png" width="40" height="65" style="vertical-align: baseline" alt=""> Consultancy</h1><p>Asset Platform</p></div>
-        </div>
-        <div class="nav-menu">
-            <div class="nav-item" data-tab="dashboard">
-                <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-                <span class="nav-label">Dashboard</span>
-            </div>
-            <div class="nav-item" data-tab="assets">
-                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
-                <span class="nav-label">Assets Registry</span>
-            </div>
-            <div class="nav-item" data-tab="inspections">
-                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
-                <span class="nav-label">Inspections</span>
-            </div>
-            <div class="nav-item" data-tab="documents">
-                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
-                <span class="nav-label">Document Bank</span>
-            </div>
-            <div class="nav-item" data-tab="users" id="usersNavItem">
-                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-                <span class="nav-label">User Management</span>
-            </div>
-            <div class="nav-item" data-tab="reports">
-                <span class="nav-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
-                <span class="nav-label">Reports</span>
-            </div>
-        </div>
-        <div class="user-info-sidebar">
-            <div class="user-avatar" id="sidebarUserAvatar">A</div>
-            <div class="user-details">
-                <div class="user-name" id="sidebarUserName">Admin User</div>
-                <div class="user-role" id="sidebarUserRole">Administrator</div>
-            </div>
-            <button class="logout-btn" onclick="logout()" title="Sign out">
-                <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            </button>
-        </div>
+<footer>
+    <div class="container footer-bottom">
+        <p>© 2026 <img src="SN LOGO2.PNG" width="30" height="45" alt="SN Logo Mini"> SN Consultancy — data-driven excellence & strategic growth</p>
+        <div><span style="color:#9F8B76;">✧</span> evidence first</div>
     </div>
-    <div class="main-content">
-        <div class="top-bar">
-            <h1 class="page-title" id="pageTitle">Dashboard</h1>
-            <div id="headerActions"></div>
+</footer>
+
+<!-- Demo Modal -->
+<div id="demoModal" class="demo-modal">
+    <div class="demo-modal-content">
+        <h3>🚀 Asset Reliability Platform</h3>
+        <p>The demo platform is currently being deployed. Please contact us for early access or schedule a live walkthrough.</p>
+        <div class="prototype-credential" style="background:#F1EAE0; color:#2C3E33; margin-bottom:12px;">
+            🔐 Demo Credentials: admin@snconsultancy.com / Admin123!
         </div>
-        <div class="content-area" id="dynamicContent">
-            <div class="loading-screen"><div class="spinner-lg"></div><span style="color:var(--gray-500);font-size:0.9rem;">Loading data...</span></div>
-        </div>
+        <p style="font-size:0.8rem;">📧 For immediate access, email: shahrulazmisalimshah@gmail.com</p>
+        <button class="demo-modal-close" onclick="closeDemoModal()">Close</button>
     </div>
 </div>
-
-<!-- TOAST CONTAINER -->
-<div class="toast-container" id="toastContainer"></div>
 
 <script>
-    const API_URL = 'http://localhost:3001/api';
-    let authToken = null;
-    let currentUser = null;
-    let currentTab = 'dashboard';
-    let assets = [];
-    let inspections = [];
-    let documents = [];
-    let chartInstances = {};
 
-    // ============ HELPERS ============
-    function showToast(message, type = 'success') {
-        const container = document.getElementById('toastContainer');
-        const toast = document.createElement('div');
-        toast.className = `toast toast-${type}`;
-        const icon = type === 'success'
-            ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
-            : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
-        toast.innerHTML = icon + message;
-        container.appendChild(toast);
-        setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3500);
-    }
+    // Demo Modal Functions
+    function showDemoModal() { document.getElementById('demoModal').style.display = 'flex'; }
+    function closeDemoModal() { document.getElementById('demoModal').style.display = 'none'; }
+    window.addEventListener('click', function(event) {
+        const modal = document.getElementById('demoModal');
 
-    function updateConnection(connected, message) {
-        const el = document.getElementById('connStatus');
-        const txt = document.getElementById('connText');
-        el.className = `conn-status ${connected ? 'conn-connected' : 'conn-disconnected'}`;
-        txt.textContent = message || (connected ? 'Connected' : 'Disconnected');
-    }
-
-    function escapeHtml(str) { if (!str) return ''; return String(str).replace(/[&<>]/g, m => m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;')); }
-
-    function statusLabel(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : 'Operational'; }
-    function riskLabel(s) { if (s >= 70) return 'high'; if (s >= 40) return 'medium'; return 'low'; }
-    function formatDate(d) { if (!d) return '—'; const dt = d.split('T')[0] || d; return dt; }
-    function healthColor(h) { return h >= 70 ? 'var(--green)' : h >= 40 ? 'var(--amber)' : 'var(--red)'; }
-
-    function roleDisplay(role) {
-        const map = { admin: 'Administrator', manager: 'Asset Manager', engineer: 'Engineer', supervisor: 'Supervisor' };
-        return map[role] || role;
-    }
-
-    // ============ API CALLS ============
-    async function apiCall(endpoint, method = 'GET', body = null) {
-        const options = { method, headers: { 'Content-Type': 'application/json' } };
-        if (authToken) options.headers['Authorization'] = `Bearer ${authToken}`;
-        if (body) options.body = JSON.stringify(body);
-        const response = await fetch(`${API_URL}${endpoint}`, options);
-        if (!response.ok) {
-            const err = await response.json().catch(() => ({}));
-            throw new Error(err.error || `HTTP ${response.status}`);
-        }
-        if (response.status === 204) return null;
-        return await response.json();
-    }
-
-    // ============ LOGIN ============
-    async function handleLogin() {
-        const email = document.getElementById('loginEmail').value.trim();
-        const password = document.getElementById('loginPassword').value;
-        const errorEl = document.getElementById('loginError');
-        const errorText = document.getElementById('loginErrorText');
-        const btn = document.getElementById('loginBtn');
-
-        errorEl.classList.remove('show');
-
-        if (!email || !password) {
-            errorText.textContent = 'Please enter both email and password';
-            errorEl.classList.add('show');
-            return;
-        }
-
-        btn.classList.add('loading');
-        btn.disabled = true;
-
-        try {
-            updateConnection(false, 'Authenticating...');
-            const data = await apiCall('/login', 'POST', { email, password });
-
-            authToken = data.token;
-            currentUser = data.user;
-            updateConnection(true, `Signed in as ${currentUser.name}`);
-
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('mainApp').classList.add('active');
-            document.getElementById('sidebarUserName').textContent = currentUser.name;
-            document.getElementById('sidebarUserRole').textContent = roleDisplay(currentUser.role);
-            document.getElementById('sidebarUserAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
-
-            const usersNav = document.getElementById('usersNavItem');
-            if (usersNav) usersNav.style.display = currentUser.role === 'admin' ? 'flex' : 'none';
-
-            await loadAllData();
-            setActiveTab('dashboard');
-        } catch (err) {
-            updateConnection(false, 'Login failed');
-            errorText.textContent = err.message.includes('fetch') ? 'Cannot reach server. Make sure the backend is running on port 3001.' : err.message;
-            errorEl.classList.add('show');
-        } finally {
-            btn.classList.remove('loading');
-            btn.disabled = false;
-        }
-    }
-
-    // Enter key to login
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Enter' && document.getElementById('loginScreen').style.display !== 'none') {
-            handleLogin();
+        if (event.target === modal) {
+            modal.style.display = 'none';
         }
     });
 
-    async function loadAllData() {
-        try {
-            [assets, inspections, documents] = await Promise.all([
-                apiCall('/assets'), apiCall('/inspections'), apiCall('/documents')
-            ]);
-            assets = assets || []; inspections = inspections || []; documents = documents || [];
-            updateConnection(true, `${assets.length} assets loaded`);
-        } catch (err) {
-            console.error('Load error:', err);
-            updateConnection(false, 'Failed to load data');
-            assets = []; inspections = []; documents = [];
+
+    (function() {
+        const pages = {
+            home: document.getElementById('home-page'),
+            services: document.getElementById('services-page'),
+            blueprint: document.getElementById('blueprint-page'),
+            digital: document.getElementById('digital-page'),
+            about: document.getElementById('about-page'),
+            contact: document.getElementById('contact-page')
+        };
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function showPage(pageId) {
+            Object.keys(pages).forEach(id => { if(pages[id]) pages[id].classList.remove('active-page'); });
+            if(pages[pageId]) pages[pageId].classList.add('active-page');
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('data-page');
+                if (linkPage === pageId) link.classList.add('active');
+                else link.classList.remove('active');
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    }
 
-    function logout() {
-        authToken = null;
-        currentUser = null;
-        Object.values(chartInstances).forEach(c => { try { c.destroy(); } catch(e) {} });
-        chartInstances = {};
-        document.getElementById('loginScreen').style.display = 'flex';
-        document.getElementById('mainApp').classList.remove('active');
-        document.getElementById('loginEmail').value = '';
-        document.getElementById('loginPassword').value = '';
-        updateConnection(false, 'Signed out');
-    }
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
 
-    // ============ NAVIGATION ============
-    function setActiveTab(tabId) {
-        currentTab = tabId;
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.classList.toggle('active', item.getAttribute('data-tab') === tabId);
+                // Remove active class from all pages
+                Object.values(pages).forEach(page => {
+                    page.classList.remove('active-page');
+                });
+
+                // Remove active state from all nav links
+                navLinks.forEach(nav => nav.classList.remove('active'));
+
+                // Get selected page
+                const pageId = this.getAttribute('data-page');
+
+                // Show selected page
+                if (pages[pageId]) {
+                    pages[pageId].classList.add('active-page');
+                }
+
+                // Highlight active menu
+                this.classList.add('active');
+
+                // Scroll top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         });
-        const titles = { dashboard: 'Dashboard', assets: 'Assets Registry', inspections: 'Inspections Log', documents: 'Document Bank', users: 'User Management', reports: 'Executive Reports' };
-        document.getElementById('pageTitle').textContent = titles[tabId] || 'Dashboard';
-        renderCurrentView();
-    }
 
-    function renderCurrentView() {
-        const container = document.getElementById('dynamicContent');
-        if (!container) return;
-        const renderers = {
-            dashboard: renderDashboard,
-            assets: renderAssetsList,
-            inspections: renderInspections,
-            documents: renderDocuments,
-            users: renderUsers,
-            reports: renderReports
-        };
-        (renderers[currentTab] || renderDashboard)(container);
-    }
+        document.querySelectorAll('.tier-cta').forEach(btn => {
+            btn.addEventListener('click', () => alert("Thank you for your interest!\n\nOur strategic analytics team will contact you within 24 hours."));
+        });
+        document.getElementById('contact-now-btn')?.addEventListener('click', () => {
+            alert("📱 Complete App Demo Request\n\nWe'll show you how managers, engineers, and supervisors can monitor daily activity.");
+        });
+        document.getElementById('blueprint-demo-btn')?.addEventListener('click', () => {
+            alert("📱 Interactive Prototype Request\n\nA solutions architect will reach out within 24 hours.");
+        });
 
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('click', () => setActiveTab(item.getAttribute('data-tab')));
-    });
-
-    // ============ MODALS ============
-    function modal(html) {
-        const existing = document.querySelector('.modal-overlay');
-        if (existing) existing.remove();
-        const overlay = document.createElement('div'); overlay.className = 'modal-overlay';
-        overlay.innerHTML = `<div class="modal">${html}</div>`;
-        overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
-        document.body.appendChild(overlay);
-        return overlay;
-    }
-
-    // ============ ADD ASSET ============
-    function showAddAssetModal() {
-        const m = modal(`
-            <h3>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-900)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                Register New Asset
-            </h3>
-            <div class="form-group"><label>Asset Tag</label><input type="text" id="f_assetTag" placeholder="e.g. B-103"></div>
-            <div class="form-group"><label>Asset Name</label><input type="text" id="f_assetName" placeholder="e.g. Boiler B-103"></div>
-            <div class="form-group"><label>Asset Type</label><select id="f_assetType"><option>boiler</option><option>vessel</option><option>exchanger</option><option>piping</option></select></div>
-            <div class="form-group"><label>Manufacturer</label><input type="text" id="f_manufacturer" placeholder="Manufacturer name"></div>
-            <div class="form-group"><label>Installation Date</label><input type="date" id="f_installDate"></div>
-            <div class="form-group"><label>Design Life (years)</label><input type="number" id="f_designLife" value="25" min="1"></div>
-            <div class="form-group"><label>Initial Health (%)</label><input type="number" id="f_health" value="100" min="0" max="100"></div>
-            <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cancel</button>
-                <button class="btn btn-primary" id="saveAssetBtn">Create Asset</button>
-            </div>
-        `);
-        document.getElementById('saveAssetBtn').onclick = async () => {
-            const data = {
-                assetTag: document.getElementById('f_assetTag').value,
-                assetName: document.getElementById('f_assetName').value,
-                assetType: document.getElementById('f_assetType').value,
-                manufacturer: document.getElementById('f_manufacturer').value,
-                installDate: document.getElementById('f_installDate').value,
-                designLifeYears: parseInt(document.getElementById('f_designLife').value) || 25,
-                healthPercentage: parseInt(document.getElementById('f_health').value) || 100
+        const track = document.querySelector('.marquee-track-middle');
+        if (track) {
+            const updateMarquee = () => {
+                const children = Array.from(track.children);
+                let totalWidth = 0;
+                children.forEach(c => { totalWidth += c.offsetWidth; });
+                if (totalWidth < window.innerWidth * 1.5 && children.length < 20) {
+                    for (let i = 0; i < 3; i++) children.forEach(c => track.appendChild(c.cloneNode(true)));
+                }
             };
-            if (!data.assetTag || !data.assetName) { showToast('Asset Tag and Name are required', 'error'); return; }
-            try {
-                await apiCall('/assets', 'POST', data);
-                showToast(`Asset "${data.assetName}" created`);
-                m.remove();
-                await loadAllData();
-                renderCurrentView();
-            } catch (err) { showToast(err.message, 'error'); }
-        };
-    }
-
-    // ============ ADD INSPECTION ============
-    function showAddInspectionModal(assetId) {
-        if (!assets.length) { showToast('No assets found. Add an asset first.', 'error'); return; }
-        const opts = assets.map(a => `<option value="${a.AssetId}" ${assetId == a.AssetId ? 'selected' : ''}>${escapeHtml(a.AssetName)}</option>`).join('');
-        const m = modal(`
-            <h3>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-900)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-                Log New Inspection
-            </h3>
-            <div class="form-group"><label>Asset</label><select id="f_inspAsset">${opts}</select></div>
-            <div class="form-group"><label>Inspection Date</label><input type="date" id="f_inspDate"></div>
-            <div class="form-group"><label>Inspection Type</label><select id="f_inspType"><option>visual</option><option>ultrasonic</option><option>radiographic</option><option>magnetic_particle</option></select></div>
-            <div class="form-group"><label>Findings</label><textarea id="f_inspFindings" rows="3" placeholder="Describe findings..."></textarea></div>
-            <div class="form-group"><label>Risk Score (0-100)</label><input type="number" id="f_inspRisk" value="50" min="0" max="100"></div>
-            <div class="form-group"><label>Inspector Name</label><input type="text" id="f_inspector" placeholder="Inspector name"></div>
-            <div class="form-group"><label>Next Inspection Date</label><input type="date" id="f_nextInsp"></div>
-            <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cancel</button>
-                <button class="btn btn-primary" id="saveInspBtn">Save Inspection</button>
-            </div>
-        `);
-        document.getElementById('saveInspBtn').onclick = async () => {
-            const data = {
-                assetId: parseInt(document.getElementById('f_inspAsset').value),
-                inspectionDate: document.getElementById('f_inspDate').value,
-                inspectionType: document.getElementById('f_inspType').value,
-                findings: document.getElementById('f_inspFindings').value,
-                riskScore: parseInt(document.getElementById('f_inspRisk').value) || 50,
-                inspectorName: document.getElementById('f_inspector').value || 'Unknown',
-                nextInspectionDate: document.getElementById('f_nextInsp').value
-            };
-            if (!data.inspectionDate) { showToast('Please select inspection date', 'error'); return; }
-            try {
-                await apiCall('/inspections', 'POST', data);
-                const name = assets.find(a => a.AssetId === data.assetId)?.AssetName || '';
-                showToast(`Inspection recorded for ${name}`);
-                m.remove();
-                await loadAllData();
-                renderCurrentView();
-            } catch (err) { showToast(err.message, 'error'); }
-        };
-    }
-
-    // ============ UPLOAD DOCUMENT ============
-    function showUploadDocumentModal(assetId) {
-        if (!assets.length) { showToast('No assets found. Add an asset first.', 'error'); return; }
-        const opts = assets.map(a => `<option value="${a.AssetId}" ${assetId == a.AssetId ? 'selected' : ''}>${escapeHtml(a.AssetName)}</option>`).join('');
-        const m = modal(`
-            <h3>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-900)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                Upload Document
-            </h3>
-            <div class="form-group"><label>Asset</label><select id="f_docAsset">${opts}</select></div>
-            <div class="form-group"><label>Document Name</label><input type="text" id="f_docName" placeholder="e.g. Design Drawing.pdf"></div>
-            <div class="form-group"><label>Document Type</label><select id="f_docType"><option>design_drawing</option><option>repair_drawing</option><option>inspection_report</option><option>material_certificate</option></select></div>
-            <div class="form-group"><label>File Reference</label><input type="text" id="f_docFile" placeholder="filename.pdf" value="document.pdf"></div>
-            <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="this.closest('.modal-overlay').remove()">Cancel</button>
-                <button class="btn btn-primary" id="saveDocBtn">Upload Document</button>
-            </div>
-        `);
-        document.getElementById('saveDocBtn').onclick = async () => {
-            const data = {
-                assetId: parseInt(document.getElementById('f_docAsset').value),
-                documentName: document.getElementById('f_docName').value,
-                documentType: document.getElementById('f_docType').value,
-                fileName: document.getElementById('f_docFile').value
-            };
-            if (!data.documentName) { showToast('Document name is required', 'error'); return; }
-            try {
-                await apiCall('/documents/upload', 'POST', data);
-                showToast(`"${data.documentName}" uploaded`);
-                m.remove();
-                await loadAllData();
-                renderCurrentView();
-            } catch (err) { showToast(err.message, 'error'); }
-        };
-    }
-
-    // ============ DASHBOARD ============
-    function renderDashboard(container) {
-        const totalAssets = assets.length;
-        const atRisk = assets.filter(a => a.Status === 'caution' || a.Status === 'critical').length;
-        const critical = assets.filter(a => a.Status === 'critical').length;
-        const avgHealth = assets.length ? Math.round(assets.reduce((s, a) => s + (a.HealthPercentage || 0), 0) / assets.length) : 0;
-        const statusCounts = { operational: 0, caution: 0, critical: 0 };
-        assets.forEach(a => statusCounts[a.Status || 'operational']++);
-
-        container.innerHTML = `
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-icon" style="background:#eff6ff;color:var(--blue);"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-                    <div class="kpi-value">${totalAssets}</div>
-                    <div class="kpi-label">Total Assets</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon" style="background:#fffbeb;color:var(--amber);"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-                    <div class="kpi-value">${atRisk}</div>
-                    <div class="kpi-label">Assets at Risk</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon" style="background:#fef2f2;color:var(--red);"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
-                    <div class="kpi-value">${critical}</div>
-                    <div class="kpi-label">Critical Condition</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon" style="background:#f0fdf4;color:var(--green);"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-                    <div class="kpi-value">${avgHealth}%</div>
-                    <div class="kpi-label">Average Health</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon" style="background:#f5f3ff;color:#8b5cf6;"><svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
-                    <div class="kpi-value">${inspections.length}</div>
-                    <div class="kpi-label">Inspections</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon" style="background:#fdf2f8;color:#ec4899;"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-                    <div class="kpi-value">${documents.length}</div>
-                    <div class="kpi-label">Documents</div>
-                </div>
-            </div>
-
-            <div class="charts-row">
-                <div class="chart-card">
-                    <h3>Asset Health Distribution</h3>
-                    <canvas id="healthChart"></canvas>
-                </div>
-                <div class="chart-card">
-                    <h3>Status Overview</h3>
-                    <canvas id="statusChart"></canvas>
-                </div>
-            </div>
-
-            <div class="section-header">
-                <h3>Asset Health Heat Map</h3>
-                <button class="btn btn-primary" onclick="showAddAssetModal()">
-                    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                    Add Asset
-                </button>
-            </div>
-            <div class="asset-grid" id="assetGrid"></div>
-        `;
-
-        // Charts
-        setTimeout(() => {
-            Object.values(chartInstances).forEach(c => { try { c.destroy(); } catch(e) {} });
-            chartInstances = {};
-
-            const hCtx = document.getElementById('healthChart')?.getContext('2d');
-            if (hCtx && assets.length) {
-                chartInstances.health = new Chart(hCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: assets.map(a => a.AssetName),
-                        datasets: [{
-                            label: 'Health %',
-                            data: assets.map(a => a.HealthPercentage || 0),
-                            backgroundColor: assets.map(a => healthColor(a.HealthPercentage)),
-                            borderRadius: 4,
-                            borderSkipped: false
-                        }]
-                    },
-                    options: {
-                        responsive: true, maintainAspectRatio: true,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { beginAtZero: true, max: 100, grid: { color: 'rgba(0,0,0,0.04)' } },
-                            x: { grid: { display: false } }
-                        }
-                    }
-                });
-            }
-
-            const sCtx = document.getElementById('statusChart')?.getContext('2d');
-            if (sCtx) {
-                chartInstances.status = new Chart(sCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Operational', 'Caution', 'Critical'],
-                        datasets: [{
-                            data: [statusCounts.operational, statusCounts.caution, statusCounts.critical],
-                            backgroundColor: ['#22c55e', '#f59e0b', '#ef4444'],
-                            borderWidth: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true, maintainAspectRatio: true,
-                        plugins: { legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true, pointStyle: 'circle' } } },
-                        cutout: '65%'
-                    }
-                });
-            }
-        }, 50);
-
-        const grid = document.getElementById('assetGrid');
-        if (grid) {
-            grid.innerHTML = '';
-            assets.forEach(asset => {
-                const health = asset.HealthPercentage || 0;
-                const status = asset.Status || 'operational';
-                const borderClass = `border-${status}`;
-                const badgeClass = `badge badge-${status}`;
-                grid.innerHTML += `
-                    <div class="asset-card ${borderClass}" onclick="viewAsset(${asset.AssetId})">
-                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                            <span class="asset-name">${escapeHtml(asset.AssetName)}</span>
-                            <span class="${badgeClass}"><span class="dot"></span>${statusLabel(status)}</span>
-                        </div>
-                        <div class="asset-meta">${asset.AssetType}${asset.Manufacturer ? ' | ' + escapeHtml(asset.Manufacturer) : ''}</div>
-                        <div class="health-row">
-                            <div class="health-header"><span>Health: ${health}%</span><span>RUL: ${asset.RemainingLifeDays || 365} days</span></div>
-                            <div class="health-bar"><div class="health-bar-fill" style="width:${health}%;background:${healthColor(health)};"></div></div>
-                        </div>
-                    </div>`;
-            });
+            window.addEventListener('load', updateMarquee);
+            window.addEventListener('resize', () => requestAnimationFrame(updateMarquee));
+            updateMarquee();
         }
-    }
 
-    // ============ ASSETS LIST ============
-    function renderAssetsList(container) {
-        container.innerHTML = `
-            <div style="display:flex;justify-content:flex-end;margin-bottom:20px;">
-                <button class="btn btn-primary" onclick="showAddAssetModal()">
-                    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                    Add Asset
-                </button>
-            </div>
-            <div class="asset-grid" id="assetGrid"></div>
-        `;
-        const grid = document.getElementById('assetGrid');
-        if (grid) {
-            grid.innerHTML = '';
-            assets.forEach(asset => {
-                const health = asset.HealthPercentage || 0;
-                const status = asset.Status || 'operational';
-                grid.innerHTML += `
-                    <div class="asset-card border-${status}" onclick="viewAsset(${asset.AssetId})">
-                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                            <span class="asset-name">${escapeHtml(asset.AssetName)}</span>
-                            <span class="badge badge-${status}"><span class="dot"></span>${statusLabel(status)}</span>
-                        </div>
-                        <div class="asset-meta">${escapeHtml(asset.AssetTag)} | ${asset.AssetType}</div>
-                        <div class="health-row">
-                            <div class="health-header"><span>Health: ${health}%</span></div>
-                            <div class="health-bar"><div class="health-bar-fill" style="width:${health}%;background:${healthColor(health)};"></div></div>
-                        </div>
-                        <div style="margin-top:12px;">
-                            <span class="btn btn-secondary btn-xs">View Details</span>
-                        </div>
-                    </div>`;
-            });
-            if (!assets.length) {
-                grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray-400);">No assets registered. Click "Add Asset" to get started.</div>';
-            }
-        }
-    }
-
-    // ============ INSPECTIONS ============
-    function renderInspections(container) {
-        container.innerHTML = `
-            <div style="display:flex;justify-content:flex-end;margin-bottom:20px;">
-                <button class="btn btn-primary" onclick="showAddInspectionModal()">
-                    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                    Add Inspection
-                </button>
-            </div>
-            <div class="table-wrap">
-                <table class="data-table">
-                    <thead><tr><th>Date</th><th>Asset</th><th>Type</th><th>Findings</th><th>Risk</th><th>Actions</th></tr></thead>
-                    <tbody id="inspTable"></tbody>
-                </table>
-            </div>
-        `;
-        const tbody = document.getElementById('inspTable');
-        if (tbody) {
-            tbody.innerHTML = '';
-            inspections.forEach(ins => {
-                const asset = assets.find(a => a.AssetId === ins.AssetId);
-                const risk = riskLabel(ins.RiskScore);
-                tbody.innerHTML += `
-                    <tr>
-                        <td style="white-space:nowrap;">${formatDate(ins.InspectionDate)}</td>
-                        <td><strong>${asset?.AssetName || 'Unknown'}</strong></td>
-                        <td>${ins.InspectionType}</td>
-                        <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml((ins.Findings || '').substring(0, 60))}</td>
-                        <td><span class="badge badge-risk-${risk}"><span class="dot"></span>${ins.RiskScore}</span></td>
-                        <td><button class="btn btn-secondary btn-xs" onclick="viewAsset(${ins.AssetId})">View Asset</button></td>
-                    </tr>`;
-            });
-            if (!inspections.length) {
-                tbody.innerHTML = '<tr><td colspan="6" class="empty">No inspections recorded.</td></tr>';
-            }
-        }
-    }
-
-    // ============ DOCUMENTS ============
-    function renderDocuments(container) {
-        container.innerHTML = `
-            <div style="display:flex;justify-content:flex-end;margin-bottom:20px;">
-                <button class="btn btn-primary" onclick="showUploadDocumentModal()">
-                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                    Upload Document
-                </button>
-            </div>
-            <div class="table-wrap">
-                <table class="data-table">
-                    <thead><tr><th>Asset</th><th>Document Name</th><th>Type</th><th>Date</th><th>Actions</th></tr></thead>
-                    <tbody id="docTableBody"></tbody>
-                </table>
-            </div>
-        `;
-        const tbody = document.getElementById('docTableBody');
-        if (tbody) {
-            tbody.innerHTML = '';
-            documents.forEach(doc => {
-                const asset = assets.find(a => a.AssetId === doc.AssetId);
-                tbody.innerHTML += `
-                    <tr>
-                        <td>${asset?.AssetName || 'Unknown'}</td>
-                        <td>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;color:var(--gray-400);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                            ${escapeHtml(doc.DocumentName)}
-                        </td>
-                        <td>${doc.DocumentType}</td>
-                        <td>${formatDate(doc.UploadedAt)}</td>
-                        <td><button class="btn btn-secondary btn-xs" onclick="showToast('Document: ${escapeHtml(doc.DocumentName)}', 'success')">View</button></td>
-                    </tr>`;
-            });
-            if (!documents.length) {
-                tbody.innerHTML = '<tr><td colspan="5" class="empty">No documents uploaded.</td></tr>';
-            }
-        }
-    }
-
-    // ============ USERS ============
-    function renderUsers(container) {
-        container.innerHTML = `
-            <div style="background:white;border-radius:var(--radius);padding:40px;text-align:center;border:1px solid var(--gray-200);">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gray-300)" stroke-width="1.5" style="margin-bottom:16px;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                <h3 style="font-weight:600;margin-bottom:8px;color:var(--gray-700);">User Management</h3>
-                <p style="color:var(--gray-500);font-size:0.9rem;">User management is available to administrators.</p>
-            </div>`;
-    }
-
-    // ============ REPORTS ============
-    function renderReports(container) {
-        const avgHealth = assets.length ? Math.round(assets.reduce((s, a) => s + (a.HealthPercentage || 0), 0) / assets.length) : 0;
-        const atRisk = assets.filter(a => a.Status !== 'operational').length;
-        container.innerHTML = `
-            <div class="detail-card">
-                <div class="detail-header"><h2>Executive Report</h2></div>
-                <div class="detail-body">
-                    <div class="detail-grid">
-                        <div class="detail-stat"><div class="stat-label">Total Assets</div><div class="stat-value">${assets.length}</div></div>
-                        <div class="detail-stat"><div class="stat-label">Average Health</div><div class="stat-value">${avgHealth}%</div></div>
-                        <div class="detail-stat"><div class="stat-label">At Risk</div><div class="stat-value">${atRisk}</div></div>
-                        <div class="detail-stat"><div class="stat-label">Total Inspections</div><div class="stat-value">${inspections.length}</div></div>
-                    </div>
-                    <h4 style="font-size:0.95rem;font-weight:600;color:var(--gray-700);margin-bottom:12px;">Asset Breakdown</h4>
-                    <div style="display:flex;flex-direction:column;gap:8px;">
-                        ${assets.map(a => `
-                            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--gray-50);border-radius:var(--radius-sm);">
-                                <span style="font-weight:500;font-size:0.88rem;">${escapeHtml(a.AssetName)}</span>
-                                <span style="display:flex;align-items:center;gap:8px;">
-                                    <span style="font-size:0.85rem;color:var(--gray-600);">${a.HealthPercentage || 0}%</span>
-                                    <span class="badge badge-${a.Status || 'operational'}"><span class="dot"></span>${statusLabel(a.Status)}</span>
-                                </span>
-                            </div>
-                        `).join('') || '<div style="color:var(--gray-400);padding:20px;text-align:center;">No assets registered.</div>'}
-                    </div>
-                    <div style="margin-top:24px;">
-                        <button class="btn btn-primary" onclick="showToast('Report export initiated')">
-                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            Download Report
-                        </button>
-                    </div>
-                </div>
-            </div>`;
-    }
-
-    // ============ ASSET DETAIL ============
-    function viewAsset(assetId) {
-        const asset = assets.find(a => a.AssetId === assetId);
-        if (!asset) return;
-        const assetInspections = inspections.filter(i => i.AssetId === assetId);
-        const assetDocs = documents.filter(d => d.AssetId === assetId);
-        const statusClass = `badge badge-${asset.Status || 'operational'}`;
-
-        let html = `
-            <button class="btn btn-secondary btn-sm" onclick="setActiveTab('assets')" style="margin-bottom:20px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-                Back to Assets
-            </button>
-            <div class="detail-card">
-                <div class="detail-header">
-                    <h2>${escapeHtml(asset.AssetName)}</h2>
-                    <span class="${statusClass}"><span class="dot"></span>${statusLabel(asset.Status)}</span>
-                </div>
-                <div class="detail-body">
-                    <div class="detail-grid">
-                        <div class="detail-stat"><div class="stat-label">Health Score</div><div class="stat-value">${asset.HealthPercentage}%</div></div>
-                        <div class="detail-stat"><div class="stat-label">Remaining Life</div><div class="stat-value">${asset.RemainingLifeDays} days</div></div>
-                        <div class="detail-stat"><div class="stat-label">Install Date</div><div class="stat-value">${formatDate(asset.InstallDate)}</div></div>
-                        <div class="detail-stat"><div class="stat-label">Design Life</div><div class="stat-value">${asset.DesignLifeYears || 25} years</div></div>
-                        <div class="detail-stat"><div class="stat-label">Corrosion Rate</div><div class="stat-value">${asset.CorrosionRateMmPerYear || 0.1} mm/yr</div></div>
-                        <div class="detail-stat"><div class="stat-label">Operational Cycles</div><div class="stat-value">${asset.OperationalCycles || 0}</div></div>
-                    </div>
-
-                    <div style="margin-bottom:24px;">
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-                            <h4 style="font-size:0.95rem;font-weight:600;color:var(--gray-700);">Inspection History</h4>
-                            <button class="btn btn-primary btn-sm" onclick="showAddInspectionModal(${asset.AssetId})">
-                                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                                Add Inspection
-                            </button>
-                        </div>
-                        <div class="table-wrap">
-                            <table class="data-table">
-                                <thead><tr><th>Date</th><th>Type</th><th>Findings</th><th>Risk</th></tr></thead>
-                                <tbody>
-                                    ${assetInspections.map(i => `
-                                        <tr>
-                                            <td>${formatDate(i.InspectionDate)}</td>
-                                            <td>${i.InspectionType}</td>
-                                            <td>${escapeHtml((i.Findings || '').substring(0, 60))}</td>
-                                            <td><span class="badge badge-risk-${riskLabel(i.RiskScore)}"><span class="dot"></span>${i.RiskScore}</span></td>
-                                        </tr>
-                                    `).join('') || '<tr><td colspan="4" class="empty">No inspections recorded</td></tr>'}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-                            <h4 style="font-size:0.95rem;font-weight:600;color:var(--gray-700);">Documents (${assetDocs.length})</h4>
-                            <button class="btn btn-primary btn-sm" onclick="showUploadDocumentModal(${asset.AssetId})">
-                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                                Upload Document
-                            </button>
-                        </div>
-                        <div style="display:flex;flex-direction:column;gap:6px;">
-                            ${assetDocs.map(d => `
-                                <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--gray-50);border-radius:var(--radius-sm);font-size:0.88rem;">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                    <span style="flex:1;">${escapeHtml(d.DocumentName)}</span>
-                                    <span style="color:var(--gray-500);font-size:0.78rem;">${d.DocumentType}</span>
-                                    <span style="color:var(--gray-400);font-size:0.78rem;">${formatDate(d.UploadedAt)}</span>
-                                </div>
-                            `).join('') || '<div style="color:var(--gray-400);padding:12px;font-size:0.88rem;">No documents uploaded</div>'}
-                        </div>
-                    </div>
-                </div>
-            </div>`;
-
-        document.getElementById('dynamicContent').innerHTML = html;
-    }
-
-    // ============ EXPOSE GLOBALS ============
-    window.handleLogin = handleLogin;
-    window.logout = logout;
-    window.viewAsset = viewAsset;
-    window.setActiveTab = setActiveTab;
-    window.showAddAssetModal = showAddAssetModal;
-    window.showAddInspectionModal = showAddInspectionModal;
-    window.showUploadDocumentModal = showUploadDocumentModal;
+    })();
 </script>
+<script>
+    (function() {
+        const contactForm = document.getElementById('contactForm');
+        const statusDiv = document.getElementById('form-status');
+
+        if (contactForm && statusDiv) {
+            // Remove any existing submit listener to avoid conflicts
+            const oldSubmit = contactForm.onsubmit;
+            contactForm.onsubmit = null;
+
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Show sending status
+                statusDiv.innerHTML = '<span style="color: #7C6B58;">📨 Sending message...</span>';
+                statusDiv.style.display = 'block';
+
+                const formData = new FormData(contactForm);
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        statusDiv.innerHTML = '<span style="color: #2E7D64;">✓ Thank you! Your message has been sent. We will respond within 24 hours.</span>';
+                        contactForm.reset();
+                        // Clear success message after 5 seconds
+                        setTimeout(() => {
+                            statusDiv.style.display = 'none';
+                            statusDiv.innerHTML = '';
+                        }, 5000);
+                    } else {
+                        // Try to parse error response
+                        try {
+                            const errorData = await response.json();
+                            if (errorData.errors) {
+                                const errorMessages = errorData.errors.map(err => err.message).join(', ');
+                                statusDiv.innerHTML = `<span style="color: #C0392B;">✗ Error: ${errorMessages}</span>`;
+                            } else {
+                                statusDiv.innerHTML = '<span style="color: #C0392B;">✗ Submission failed. Please check your entries and try again.</span>';
+                            }
+                        } catch (e) {
+                            statusDiv.innerHTML = '<span style="color: #C0392B;">✗ Server error. Please try again later.</span>';
+                        }
+                        // Show error for 4 seconds
+                        setTimeout(() => {
+                            statusDiv.style.display = 'none';
+                            statusDiv.innerHTML = '';
+                        }, 4000);
+                    }
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    statusDiv.innerHTML = '<span style="color: #C0392B;">✗ Network error. Please check your connection and try again.</span>';
+                    setTimeout(() => {
+                        statusDiv.style.display = 'none';
+                        statusDiv.innerHTML = '';
+                    }, 4000);
+                }
+            });
+        }
+    })();
+</script>
+
 </body>
 </html>
