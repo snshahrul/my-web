@@ -100,6 +100,19 @@
             border-bottom-color: #CBB295;
         }
 
+        /* Prototype Button in Nav */
+        .prototype-nav-btn {
+            background: #7C6B58;
+            color: white !important;
+            padding: 8px 18px !important;
+            border-radius: 40px !important;
+            border-bottom: none !important;
+        }
+        .prototype-nav-btn:hover {
+            background: #5D5346;
+            transform: translateY(-2px);
+        }
+
         /* ========== PAGE TRANSITION ========== */
         .page {
             display: none;
@@ -271,6 +284,53 @@
         .cta-section { background: #E8DFD3; border-radius: 32px; padding: 3rem 2rem; text-align: center; margin-top: 3rem; }
         .cta-btn { background: #7C6B58; color: white; border: none; padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; margin-top: 1.2rem; cursor: pointer; }
 
+         /* PROTOTYPE LAUNCH SECTION */
+        .prototype-launch-section {
+            background: linear-gradient(135deg, #2C3E33 0%, #1A2A1F 100%);
+            border-radius: 28px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            color: white;
+        }
+        .prototype-launch-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .prototype-launch-section p {
+            margin-bottom: 1.2rem;
+            opacity: 0.9;
+        }
+        .launch-prototype-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #CBB295;
+            color: #2C3E33;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+        .launch-prototype-btn:hover {
+            background: #E8DFD3;
+            transform: translateY(-2px);
+        }
+        .prototype-credential {
+            background: rgba(255,255,255,0.15);
+            border-radius: 14px;
+            padding: 10px 18px;
+            display: inline-block;
+            margin-top: 18px;
+            font-size: 0.75rem;
+            font-family: monospace;
+        }
+
         /* Blueprint Page Styles */
         .architecture-overview { background: #FFFFFF; border-radius: 32px; padding: 2rem; margin-bottom: 2rem; box-shadow: var(--soft-shadow); }
         .layer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
@@ -310,6 +370,53 @@
         footer { background: #ECE3DB; padding: 1.2rem 0; border-top: 1px solid #DCCFC4; }
         .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
 
+        /* Modal for Demo Notification */
+        .demo-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .demo-modal-content {
+            background: white;
+            border-radius: 28px;
+            padding: 32px;
+            max-width: 420px;
+            text-align: center;
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .demo-modal-content h3 {
+            font-size: 1.5rem;
+            color: #2C3E33;
+            margin-bottom: 12px;
+        }
+        .demo-modal-content p {
+            color: #6B6B6B;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+        .demo-modal-close {
+            background: #5A7B6E;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
         @media (max-width: 850px) {
             .hero-main-text { font-size: 1.8rem; }
             .page-title { font-size: 2rem; }
@@ -327,11 +434,12 @@
         </div>
         <ul class="nav-links">
             <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
-            <li><a href="#" data-page="services" class="nav-link">Our Services</a></li>
+            <li><a href="javascript:void(0)" data-page="services" class="nav-link">Our Services</a></li>
             <li><a href="#" data-page="blueprint" class="nav-link">App Blueprint</a></li>
             <li><a href="#" data-page="digital" class="nav-link">Digital Tools</a></li>
             <li><a href="#" data-page="about" class="nav-link">About</a></li>
             <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+            <li><a href="#" onclick="showDemoModal(); return false;" class="prototype-nav-btn">🚀 Launch Demo</a></li>
         </ul>
     </div>
 </header>
@@ -413,6 +521,17 @@
                     <div class="product-card"><div class="product-icon">📁</div><div class="product-tag">Document Bank</div><h3>Asset Document Vault</h3><p>Centralized repository for design drawings, repair histories, material certificates, and NDE reports – organized per equipment.</p></div>
                     <div class="product-card"><div class="product-icon">🤖</div><div class="product-tag">AI Engine</div><h3>Repair vs. Replace Advisor</h3><p>Monte Carlo simulation + life cycle cost analysis to support capital planning decisions.</p></div>
                     <div class="product-card"><div class="product-icon">📡</div><div class="product-tag">IoT Gateway</div><h3>Sensor Integration Hub</h3><p>Plug-and-play connectivity for wall thickness, vibration, temperature, and pressure sensors.</p></div>
+                </div>
+
+               <div class="prototype-launch-section">
+                    <h2>🚀 Try the Asset Reliability Platform</h2>
+                    <p>Experience the complete app — dashboard, assets registry, inspections, and document bank.</p>
+                    <button onclick="showDemoModal()" class="launch-prototype-btn">
+                        🎯 Launch Demo Platform →
+                    </button>
+                    <div class="prototype-credential">
+                        🔐 Demo Access: admin@snconsultancy.com / Admin123!
+                    </div>
                 </div>
             </div>
         </div>
@@ -497,7 +616,33 @@
     </div>
 </footer>
 
+<!-- Demo Modal -->
+<div id="demoModal" class="demo-modal">
+    <div class="demo-modal-content">
+        <h3>🚀 Asset Reliability Platform</h3>
+        <p>The demo platform is currently being deployed. Please contact us for early access or schedule a live walkthrough.</p>
+        <div class="prototype-credential" style="background:#F1EAE0; color:#2C3E33; margin-bottom:12px;">
+            🔐 Demo Credentials: admin@snconsultancy.com / Admin123!
+        </div>
+        <p style="font-size:0.8rem;">📧 For immediate access, email: shahrulazmisalimshah@gmail.com</p>
+        <button class="demo-modal-close" onclick="closeDemoModal()">Close</button>
+    </div>
+</div>
+
 <script>
+
+    // Demo Modal Functions
+    function showDemoModal() { document.getElementById('demoModal').style.display = 'flex'; }
+    function closeDemoModal() { document.getElementById('demoModal').style.display = 'none'; }
+    window.addEventListener('click', function(event) {
+        const modal = document.getElementById('demoModal');
+
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+
     (function() {
         const pages = {
             home: document.getElementById('home-page'),
@@ -521,22 +666,35 @@
         }
 
         navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const page = link.getAttribute('data-page');
-                if (page && pages[page]) showPage(page);
-                else showPage('home');
+
+                // Remove active class from all pages
+                Object.values(pages).forEach(page => {
+                    page.classList.remove('active-page');
+                });
+
+                // Remove active state from all nav links
+                navLinks.forEach(nav => nav.classList.remove('active'));
+
+                // Get selected page
+                const pageId = this.getAttribute('data-page');
+
+                // Show selected page
+                if (pages[pageId]) {
+                    pages[pageId].classList.add('active-page');
+                }
+
+                // Highlight active menu
+                this.classList.add('active');
+
+                // Scroll top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         });
-
-        const contactForm = document.getElementById('contactForm');
-        if(contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert("Thank you for reaching out! Our team will respond within 24 hours.");
-                contactForm.reset();
-            });
-        }
 
         document.querySelectorAll('.tier-cta').forEach(btn => {
             btn.addEventListener('click', () => alert("Thank you for your interest!\n\nOur strategic analytics team will contact you within 24 hours."));
@@ -563,7 +721,6 @@
             updateMarquee();
         }
 
-        showPage('home');
     })();
 </script>
 <script>
