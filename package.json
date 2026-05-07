@@ -1,0 +1,23 @@
+{
+  "name": "sn-consultancy-platform",
+  "version": "1.0.0",
+  "description": "SN Consultancy - Industrial engineering & analytics platform with reliability tools",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "keywords": [
+    "consultancy",
+    "boiler-repair",
+    "predictive-maintenance",
+    "asset-integrity"
+  ],
+  "author": "SN Consultancy",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
